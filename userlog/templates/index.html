@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Welcome</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Some extra styling for index only */
+    .nav-links {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .nav-links a {
+      display: block;
+      padding: 12px;
+      border-radius: 6px;
+      background: #007bff;
+      color: #fff;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+
+    .nav-links a:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Welcome to Auth System</h2>
+    <p>Select an option below:</p>
+    <div class="nav-links">
+      <a href="login.html">Login</a>
+      <a href="register.html">Register</a>
+      <a href="forgot.html">Forgot Password</a>
+    </div>
+  </div>
+</body>
+</html>
