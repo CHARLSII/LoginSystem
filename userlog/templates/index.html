@@ -1,9 +1,11 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Welcome</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="{% static 'userlog/style.css' %}">
   <style>
     /* Some extra styling for index only */
     .nav-links {
@@ -29,12 +31,12 @@
 </head>
 <body>
   <div class="container">
-    <h2>Welcome to Auth System</h2>
+    <h2>Welcome to Log System</h2>
     <p>Select an option below:</p>
     <div class="nav-links">
-      <a href="login.html">Login</a>
-      <a href="register.html">Register</a>
-      <a href="forgot.html">Forgot Password</a>
+      <a href="{% url 'login' %}">Login</a>
+      <a href="{% url 'register' %}">Register</a>
+      <a href="{% url 'forgot' %}">Forgot Password</a>
     </div>
   </div>
 </body>

@@ -1,0 +1,92 @@
+/* Basic reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #f4f6f9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Container */
+.container {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+  width: 300px;
+  text-align: center;
+  position: relative; /* needed for back button positioning */
+}
+
+.container h2 {
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+/* Inputs */
+input {
+  width: 100%;
+  padding: 10px;
+  margin: 0.5rem 0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+/* Buttons */
+button {
+  width: 100%;
+  padding: 10px;
+  background: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background: #0056b3;
+}
+
+/* Paragraph & Links */
+p {
+  margin-top: 1rem;
+  font-size: 14px;
+}
+
+a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Back button (subtle, blends with container) */
+.back-button {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  font-size: 24px;          /* larger arrow */
+  font-weight: 900;         /* makes the arrow thicker/bolder */
+  color: #444;              /* subtle dark gray to blend with text */
+  background: transparent;  /* no background, blends into container */
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.back-button:hover {
+  color: #007bff;           /* highlight on hover */
+  transform: translateX(-3px); /* slight left movement on hover */
+}
