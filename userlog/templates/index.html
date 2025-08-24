@@ -2,42 +2,48 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Welcome</title>
-  <link rel="stylesheet" href="{% static 'userlog/style.css' %}">
-  <style>
-    /* Some extra styling for index only */
-    .nav-links {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <title>Welcome</title>
+    <link rel="stylesheet" href="{% static 'userlog/style.css' %}" />
+    <style>
+      /* Some extra styling for index only */
+      .nav-links {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
 
-    .nav-links a {
-      display: block;
-      padding: 12px;
-      border-radius: 6px;
-      background: #007bff;
-      color: #fff;
-      text-decoration: none;
-      transition: background 0.3s;
-    }
+      .nav-links a {
+        display: block;
+        padding: 12px;
+        border-radius: 6px;
+        background: #007bff;
+        color: #fff;
+        text-decoration: none;
+        transition: background 0.3s;
+      }
 
-    .nav-links a:hover {
-      background: #0056b3;
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <h2>Welcome to Log System</h2>
-    <p>Select an option below:</p>
-    <div class="nav-links">
-      <a href="{% url 'login' %}">Login</a>
-      <a href="{% url 'register' %}">Register</a>
-      <a href="{% url 'forgot' %}">Forgot Password</a>
+      .nav-links a:hover {
+        background: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Welcome to Log System</h2>
+      <p>Select an option below:</p>
+      <div class="nav-links">
+        <a href="{% url 'login' %}">Login</a>
+        <a href="{% url 'register' %}">Register</a>
+        <a href="{% url 'forgot' %}">Forgot Password</a>
+      </div>
     </div>
-  </div>
-</body>
+    {% if user.is_authenticated %}
+    <p>Welcome, {{ user.username }}!</p>
+    <a href="{% url 'logout' %}">Logout</a>
+    {% else %}
+    <p>You are not logged in. <a href="{% url 'login' %}">Login</a></p>
+    {% endif %}
+  </body>
 </html>
