@@ -1,9 +1,11 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from django.contrib.auth import authenticate, login as auth_login
+from django.contrib.auth import authenticate, login as auth_login, logout
 from django.contrib import messages
-from django.contrib.auth import logout
-from .models import Users
+
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
 
 
 # Create your views here.
@@ -37,6 +39,37 @@ def logout_view(request):
 
 
 def register(request):
+    if request.method == 'POST':
+        full_name = request.POST.get("full_name")
+        email = request.POST.get('email')
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        phone_number = request.POST.get("phone_number")
+        birthdate = request.POST.get("birthdate")
+        
+        if User.objects.filter(username=username).exists():
+            messages.error(request, "Username is taken")
+            return redirect('register')
+        
+        user = User.objects.create_user(
+            username = username,
+            password = password,
+            email = email,
+        )
+        
+        if full_name:
+            parts = full_name.split(" ", 1)
+            user.first_name = parts[0]
+            if len(parts) > 1:
+                user.last_name = parts[1]
+        user.phone_number = phone_number
+        user.birthdate = birthdate
+        user.save()
+            
+        auth_login(request, user)
+        return redirect("index")
+    
+    
     return render(request, 'register.html')
 
 
