@@ -74,6 +74,13 @@ def register(request):
 
 
 def forgot(request):
+    if request.method == 'POST':
+        email = request.POST.get("email")
+        
+        if User.objects.filter(email=email).exists():
+            messages.success(request, f"Password Reset Instruction sent to {email}")
+        else:
+            messages.error(request, f"No account found with an Email:{email}")
     return render(request, 'forgot.html')
 
 
